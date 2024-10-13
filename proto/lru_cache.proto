@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package lru;
+
+option go_package = "lru/proto";
+
+service LRUCache {
+  rpc Put(PutRequest) returns (PutResponse) {}
+  rpc Get(GetRequest) returns (GetResponse) {}
+  rpc Head(HeadRequest) returns (HeadResponse) {}
+}
+
+message PutRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message PutResponse {}
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  string value = 1;
+}
+
+message HeadRequest {
+  int32 n = 1;
+}
+
+message HeadResponse {
+  message Entry {
+    string key = 1;
+    string value = 2;
+  }
+  repeated Entry entries = 1;
+}

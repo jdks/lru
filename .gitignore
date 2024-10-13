@@ -1,0 +1,2 @@
+bin/
+proto/*.pb.go
